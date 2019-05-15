@@ -1,22 +1,16 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>React Test</title>
+    <title>React Babel Test</title>
     <script src="https://unpkg.com/react@16.7.0/umd/react.development.js"></script>
     <script src="https://unpkg.com/react-dom@16.7.0/umd/react-dom.development.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
   </head>
   <body>
     <div id="root">
-      <script type="text/javascript">
+      <script type="text/babel">
         ReactDOM.render(
-          React.createElement("div",
-                              null,
-                              React.createElement("h1",
-                                                  {"style": {"color": "green"}},
-                                                  "Children h1 Inside Div"
-                                                 ),
-                             ),
+          <h1>Test Babel</h1>,
           document.getElementById("root")
         );
       </script>
