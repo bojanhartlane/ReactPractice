@@ -21,7 +21,11 @@
         //let city = "Melbourne";
         const City = ({name}) => <h1>Welcome to {name}</h1>;
         const SkiResort = ({name}) => <h1>It&#39;s winter! Welcome to {name}</h1>;
-        const cityArray = ["Melbourne", "Paris", "Los Angeles"];
+        const cityArray = [{id: 1, name: "Melbourne", country: "Australia"},
+                           {id: 2, name: "Paris", country: "France"},
+                           {id: 3, name: "Los Angeles", country: "United States"}
+
+                          ];
 
         // Render multiple React element
         /*
@@ -61,8 +65,8 @@
 
         const Display = ({cities}) => (
             <ul>
-                {cities.map((city, idx) =>
-                    <li key={idx}>City: {city}</li>
+                {cities.map(city =>
+                    <li key={city.id}>City: {city.country}</li>
                 )}
             </ul>
         )
