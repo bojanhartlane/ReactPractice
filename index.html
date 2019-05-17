@@ -1,23 +1,89 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>React Test</title>
+    <title>React Babel Test</title>
     <script src="https://unpkg.com/react@16.7.0/umd/react.development.js"></script>
     <script src="https://unpkg.com/react-dom@16.7.0/umd/react-dom.development.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <style>
+      .heading {
+        color: purple;
+      }
+
+      li {
+        color: blue;
+      }
+    </style>
   </head>
   <body>
     <div id="root">
-      <script type="text/javascript">
+      <script type="text/babel">
+        //let city = "Melbourne";
+        const City = ({name}) => <h1>Welcome to {name}</h1>;
+        const SkiResort = ({name}) => <h1>It&#39;s winter! Welcome to {name}</h1>;
+        const cityArray = ["Melbourne", "Paris", "Los Angeles"];
+
+        // Render multiple React element
+        /*
+        class Display extends React.Component {
+            state = {
+                loggedIn: false
+            }
+
+            logIn = () => this.setState({loggedIn: true})
+            logOut = () => this.setState({loggedIn: false})
+
+            render() {
+                return (
+                      <div className="heading">
+                          <div>The user is {this.state.loggedIn ? "logged in" : "not logged in"}.</div>
+                          <City name="Melbourne" />
+                          <City name="Paris" />
+                          <City name="Los Angeles" />
+                          <button onClick={this.logIn}>Log In</button><br /><br />
+                          <button onClick={this.logOut}>Log Out</button>
+                      </div>
+                )
+            }
+        }
+        */
+
+        // Render component based on a conditional
+        /*
+        const Display = ({summer}) => (
+            <div className="heading">
+                {summer ? <City name="Melbourne"/> : <SkiResort name="Mt Buller"/>}
+                {summer ? <City name="Paris"/> : <SkiResort name="Mt Hotham"/>}
+                {summer ? <City name="Los Angeles"/> : <SkiResort name="Alpines"/>}
+            </div>
+        )
+        */
+
+        const Display = ({cities}) => (
+            <ul>
+                {cities.map((city, idx) =>
+                    <li key={idx}>City: {city}</li>
+                )}
+            </ul>
+        )
+
+        /*
+        // Render React element
+        const Display = () => {
+            return (
+                <div className="heading">
+                    <City name="Melbourne" />
+                    <City name="Paris" />
+                    <City name="Berlin" />
+                </div>
+            )
+        };
+        */
+
         ReactDOM.render(
-          React.createElement("div",
-                              null,
-                              React.createElement("h1",
-                                                  {"style": {"color": "green"}},
-                                                  "Children h1 Inside Div"
-                                                 ),
-                             ),
-          document.getElementById("root")
+            //<h1 className="heading">Test {city}</h1>,
+            <Display cities={cityArray}/>,
+            document.getElementById("root")
         );
       </script>
     </div>
